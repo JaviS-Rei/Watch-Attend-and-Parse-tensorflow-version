@@ -11,6 +11,7 @@ import re
 import os
 import time
 import math
+import argparse
 
 rng = np.random.RandomState(int(time.time()))
 
@@ -380,7 +381,7 @@ class WAP():
 
 		emb = tf.cond(sample_y[0] < 0,
 			lambda: tf.fill((1, self.word_dim), 0.0),
-			lambda: tf.nn.embedding_lookup(wap.embed_matrix, sample_y)
+			lambda: tf.nn.embedding_lookup(self.embed_matrix, sample_y)
 			)
 
 		#ret = self.parser.one_time_step((h_pre, None, None, alpha_past_pre, annotation, None), (emb, None))
